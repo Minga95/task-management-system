@@ -76,11 +76,12 @@ export class TaskListComponent implements OnInit {
 
   onDrop(event: CdkDragDrop<Task[]>): void {
     const task: Task = event.item.data;
+    if (!task) return;
+
     const previousContainer = event.previousContainer;
     const currentContainer = event.container;
 
     if (previousContainer !== currentContainer) {
-      const previousStatus = previousContainer.id as TaskStatus;
       const newStatus = currentContainer.id as TaskStatus;
 
       // Aggiorna lo stato dell'attività
