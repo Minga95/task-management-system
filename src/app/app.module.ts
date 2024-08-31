@@ -22,7 +22,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
+import { AppRoutingModule } from './app-routing.module';
 
 import { DndModule } from 'ngx-drag-drop';
 
@@ -30,11 +30,10 @@ import { AppComponent } from './app.component';
 import { TaskListComponent } from './component/task-list/task-list.component';
 import { TaskDetailComponent } from './component/task-detail/task-detail.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
-const routes: Routes = [
-
-];
 
 @NgModule({
   declarations: [
@@ -45,7 +44,9 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatToolbarModule,
@@ -66,6 +67,8 @@ const routes: Routes = [
     MatSnackBarModule,
     MatExpansionModule,
     MatSlideToggleModule,
+    DragDropModule,
+    CKEditorModule,
     DndModule
   ],
   providers: [],

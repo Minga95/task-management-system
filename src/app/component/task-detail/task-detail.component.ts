@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Task } from 'src/app/model/task.model';
+
 
 @Component({
   selector: 'app-task-detail',
@@ -7,4 +10,16 @@ import { Component } from '@angular/core';
 })
 export class TaskDetailComponent {
 
+  constructor(
+    public dialogRef: MatDialogRef<TaskDetailComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { task: Task }
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  saveTask(): void {
+    this.dialogRef.close(this.data.task);
+  }
 }

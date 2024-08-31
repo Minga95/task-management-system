@@ -1,1 +1,48 @@
-<p>task-list works!</p>
+<mat-card>
+  <mat-card-title>Task List</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <mat-select [(ngModel)]="filter" (ngModelChange)="updateFilteredTasks()">
+        <mat-option value="">All</mat-option>
+        <mat-option value="To Do">To Do</mat-option>
+        <mat-option value="In Progress">In Progress</mat-option>
+        <mat-option value="Done">Done</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Sort By</mat-label>
+      <mat-select [(ngModel)]="sortBy" (ngModelChange)="updateFilteredTasks()">
+        <mat-option value="title">Title</mat-option>
+        <mat-option value="status">Status</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="openDialog()">Add Task</button>
+
+    <div class="task-container">
+      <div *ngFor="let status of statuses"
+           [cdkDropListData]="filteredTasks[status]"
+           cdkDropList
+           [id]="status"
+           [cdkDropListConnectedTo]="statuses"
+           class="task-drop-zone"
+           (cdkDropListDropped)="onDrop($event)">
+        <h3>{{ status }}</h3>
+        <mat-card class="task-item"
+                  *ngFor="let task of filteredTasks[status]"
+                  cdkDrag
+                  (click)="editTask(task)">
+          <mat-card-title>{{ task.title }}</mat-card-title>
+          <mat-card-subtitle>{{ task.status }}</mat-card-subtitle>
+          <mat-card-content>{{ task.description }}</mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)="editTask(task)">Edit</button>
+            <button mat-button (click)="deleteTask(task)">Delete</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

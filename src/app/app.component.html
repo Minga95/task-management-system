@@ -1,15 +1,17 @@
 <mat-toolbar color="primary">
   <span>Task Management System</span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/">Tasks</button>
+  <button mat-button routerLink="/dashboard">Dashboard</button>
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" opened>
+  <mat-sidenav mode="side" opened>
     <mat-nav-list>
       <mat-list-item routerLink="/">Tasks</mat-list-item>
       <mat-list-item routerLink="/dashboard">Dashboard</mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
-
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

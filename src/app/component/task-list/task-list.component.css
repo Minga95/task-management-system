@@ -1,0 +1,29 @@
+/* .task-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.task-drop-zone {
+  min-height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  padding: 16px;
+}
+
+.task-item {
+  margin: 8px;
+  width: calc(33.333% - 16px);
+}
+
+@media (max-width: 600px) {
+  .task-item {
+    width: calc(50% - 16px);
+  }
+}
+
+@media (max-width: 400px) {
+  .task-item {
+    width: 100%;
+  }
+} */
